@@ -20,11 +20,11 @@
     git clone https://github.com/zf-team/fivem_esx_feedback.git
     ```
 
-2. Go to your database
-   -> Press import
-   -> Insert the `new_table.sql` file
-   -> Press save
-   => It should create a new table named `checked_users`
+2. Go to your database <br>
+   -> Press import <br>
+   -> Insert the `new_table.sql` file <br>
+   -> Press save <br>
+   => It should create a new table named `checked_users` <br>
 
 4. Add `fivem_esx_feedback` to your server configuration file (`server.cfg`):
     ```plaintext
