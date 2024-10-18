@@ -1,13 +1,13 @@
 Config = {}
 
 -- !!!!!!!!
-Config.LocalFilePath = 'D:\\FiveM\\LocalHost\\txData\\default\\data\\playersDB.json'  -- the locak file path to the playersDB.json. Is most likely in \txData\default\data
+Config.LocalFilePath = ''  -- the locak file path to the playersDB.json. Is most likely in \txData\default\data
 -- !!!!!!!!
 
 -- Time for New member in minutes
 Config.Time = {
-    f = 600, -- from when the player has to give feedback
-    u = 900       -- until when the player can give feedback
+    f = 600, -- from when the player has to give feedback        
+    u = 900       -- until when the player can give feedback         
 }
 
 -- Outfit for the Admins
@@ -42,7 +42,7 @@ Config.Npc = {
 
 -- Discord
 Config.DiscordWebhook = {
-    Url = 'https://discord.com/api/webhooks/1284852503791407166/3vbNEkXdNSVBdmhVXLqCQ__dVyeXMh0pUg3HDNqY4cIWUtmdZWnzeWD7q60Gc-Q8FXPI',
-    Name = 'Feedback',
+    Url = '',
+    Name = '',
     Color = 5761720
 }
