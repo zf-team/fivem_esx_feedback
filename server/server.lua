@@ -1,7 +1,16 @@
 ESX = exports["es_extended"]:getSharedObject()
 
 function getPlayerInfo(id) -- Get player info from local file
-    local file = io.open(Config.LocalFilePath, 'r')
+    local current_directory = lfs.currentdir()
+    local file_path = arg[0]
+    
+    if not file_path:match("^/") then
+        file_path = current_directory .. "/" .. file_path
+    end
+
+    local path = file_path:match("(.*/)") .. 'resources/' .. GetCurrentResourceName() .. '/data/' .. id .. '.json'
+    local file = io.open(path, 'r')
+    
     local _, lisence = string.match(id, "(%w+):([%w%d]+)")
     if file then
         local content = file:read('*a')
