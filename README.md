@@ -41,6 +41,12 @@
 The Configuration step is **VERY** important for this code. Please make this changed before you run the code:
 
 ```lua
+Config.LocalFilePath = ''  The path is usually found in the <server_folder>\txData\default\data. There should be a file named playersDB.json. PUT THE PATH OF THAT FILE IN THERE
+
+----
+...
+----
+
 Config.DiscordWebhook = {
   Url='your_discord_webhook_url',
   Name='name_of_webhook'
