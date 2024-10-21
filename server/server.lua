@@ -1,7 +1,15 @@
 ESX = exports["es_extended"]:getSharedObject()
 
 function getPlayerInfo(id) -- Get player info from local file
-    local file = io.open(Config.LocalFilePath, 'r')
+    local handle = io.popen("cd")
+    local path = handle:read("*a")
+    handle:close()
+
+    local result = string.match(path, "^(.-)\\txData")
+
+    local LocalFilePath = result .. "\\txData\\default\\data\\playersDB.json"
+
+    local file = io.open(LocalFilePath, 'r')
     local _, lisence = string.match(id, "(%w+):([%w%d]+)")
     if file then
         local content = file:read('*a')
@@ -25,6 +33,7 @@ end
 
 
 RegisterNetEvent('esx:playerLoaded', function(player, xPlayer, isNew) -- Check when player is loaded
+    Wait(150)
     local players = MySQL.query.await('SELECT * FROM checked_users WHERE id = @identifier', {
         ['@identifier'] = xPlayer.identifier
     })
@@ -67,7 +76,7 @@ RegisterNetEvent('esx_feedback:checkUserTime', function() -- Check player for th
             if playerInfo.playTime == Config.Time.f or playerInfo.playTime == Config.Time.u-120 or playerInfo.playTime == Config.Time.u-60 then -- If player has x hours playTime, send him a notification
                 TriggerClientEvent('esx_feedback:sendNoti', xPlayer.source)
             elseif playerInfo.playTime >= Config.Time.u then -- If player has more than x hours playTime, ban him
-                --DropPlayer(xPlayer.source, 'Du hast dein Feedbackgespräch nicht rechtzeitig gehalten. Bitte melde dich im Discord Support.')
+                DropPlayer(xPlayer.source, 'Du hast dein Feedbackgespräch nicht rechtzeitig gehalten. Bitte melde dich im Discord Support.')
             end
         end
      end
